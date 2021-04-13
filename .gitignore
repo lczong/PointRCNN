@@ -4,7 +4,6 @@
 *_ext*
 /output
 *.cu.o
-/data
 **/build
 *.png
 **/*.egg-info
