@@ -429,10 +429,10 @@ class KittiRCNNDataset(KittiDataset):
         extra_gt_boxes3d_list = []
         new_pts_list, new_pts_intensity_list = [], []
         src_pts_flag = np.ones(pts_rect.shape[0], dtype=np.int32)
-
+        '''
         road_plane = self.get_road_plane(sample_id)
         a, b, c, d = road_plane
-
+        '''
         while try_times > 0:
             if cnt > extra_gt_num:
                 break
@@ -464,12 +464,13 @@ class KittiRCNNDataset(KittiDataset):
                 continue
 
             # put it on the road plane
+            '''
             cur_height = (-d - a * center[0] - c * center[2]) / b
             move_height = new_gt_box3d[1] - cur_height
             new_gt_box3d[1] -= move_height
             new_gt_points[:, 1] -= move_height
             new_gt_obj.pos[1] -= move_height
-
+            '''
             new_enlarged_box3d = new_gt_box3d.copy()
             new_enlarged_box3d[4] += 0.5
             new_enlarged_box3d[5] += 0.5  # enlarge new added box to avoid too nearby boxes
